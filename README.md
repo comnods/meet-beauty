@@ -7,7 +7,7 @@ meet-beauty 直译为“遇见美丽”，主要是献给爱情的一款纯前�
 
 ## 主要技术
 
-本项目主要采用了：HTML5 + CSS3 + vue.js 完成
+本项目主要采用了：HTML5 + CSS3 + bootstrap + vue 完成
 
 
 
