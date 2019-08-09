@@ -13,4 +13,4 @@ meet-beauty 直译为“遇见美丽”，主要是献给爱情的一款纯前�
 
 ## 文件目录结构
 
-![](https://github.com/biek12/meet-beauty/blob/master/resource/img/tree.png)
+![](./resource/img/tree.png)
