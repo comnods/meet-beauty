@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            function init() {
+                var mscSrc = 'music/多远都要在一起 - 邓紫棋.m4a';
+                let audioDom = "<audio id='MusicPlayer' autoplay>" +
+                    "<source id='audioSource' src='" + mscSrc + "' type='audio/m4a'>" +
+                    "</audio>";
+                $('#main').append(audioDom);
+            }
+
+            init();
+            var audioDOM = document.getElementById('MusicPlayer');
+            audioDOM.load();
+            audioDOM.play();
+        });
+    </script>
+</head>
+<body>
+<div id="main"></div>
+<script type="text/javascript">
+    // new Vue({
+    //     el: '#main',
+    //     data: {
+    //         mscSrc: ''
+    //     },
+    //     methods: {
+    //         init() {
+    //             this.mscSrc = 'music/' + '多远都要在一起 - 邓紫棋.m4a';
+    //             let audioDom = "<audio id='MusicPlayer' autoplay>" +
+    //                         "<source id='audioSource' src='" + this.mscSrc + "' type='audio/m4a'>" +
+    //                     "</audio>";
+    //             $('#main').append(audioDom);
+    //         }
+    //     }
+    // });
+</script>
+</body>
+</html>

@@ -7,13 +7,117 @@
     <title>with your love</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap-v4.0.0.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/encapsulations.js"></script> <!--  自己封装的 jq 方法  -->
     <script type="text/javascript" src="js/vue.min.js"></script>
 </head>
 <body>
-this is git push test.
+<div class="main-progress container-fluid">
+    <!--  第一层蒙版  -->
+    <div class="first-mask">
+        this is first mask
+    </div>
+    <!--  留置主框架的功能区  -->
+    <!--  百试不爽的音乐播放器  -->
+    <div class="musicAU">
+        <div id="music-panel">
+            <div id="music-control-image">
+                <img id="music-control-imas" :src="musicSrc.img" alt="">
+            </div>
+            <div id="music-control-panel">
+                <span>{{ musicSrc.mtitle }}</span>
+                <!--  按钮集  -->
+                <div class="music-control-panel-btn">
+                    <a href="javascript: void(0);" @click="prevMusic()" id="audio_prev"></a>
+                    <a href="javascript: void(0);" @click="parseAndPlay()" id="audio_parse"></a>
+                    <a href="javascript: void(0);" @click="nextMusic()" id="audio_next"></a>
+                    <a href="javascript: void(0);" @click="stopMusic()" id="audio_stop"></a>
+                </div>
+            </div>
+        </div>
+        <audio id="audioPayer" ref='audio' :src="musicSrc.msrc" controls autoplay="autoplay" hidden="true"></audio>
+    </div>
+</div>
 <!--  bootsrap.js 依赖文件  -->
-<script type="text/javascript" src="js/jquery.slim.min.js"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-v4.0.0.min.js"></script>
 </body>
+<script type="text/javascript">
+    $(function () {
+        // 获取全局 DOM
+        var audioDOM = document.getElementById('audioPayer');
+
+        // 默认情况下动态设置 main-progree 的高宽
+        $('.main-progress').genWidthAndHeight($(window).width(), $(window).height());
+        // 默认情况下动态设置 first-mask 的高宽
+        $('.first-mask').genWidthAndHeight($(window).width(), $(window).height());
+        // 默认情况下动态设置 music-control-panel 的宽度
+        $('#music-control-panel').width($(window).width() - $('#music-control-image').outerWidth());
+        // 即使在高宽变化的情况下也自动设置
+        $(window).on('resize',function () {
+            // console.log("Windows.width = " + $(window).width() + "Windows.height = " + $(window).height());
+            // 动态设置 main-progree 的高宽
+            $('.main-progress').genWidthAndHeight($(window).width(), $(window).height());
+            // 动态设置 first-mask 的高宽
+            $('.first-mask').genWidthAndHeight($(window).width(), $(window).height());
+            // 动态设置 music-control-panel 的宽度
+            $('#music-control-panel').width($(window).width() - $('#music-control-image').outerWidth());
+        });
+
+        new Vue({
+            el: '.musicAU',
+            data: {
+                musicSrc: {
+                    img: 'resource/img/多远都要在一起.jpg',msrc: 'resource/music/多远都要在一起 - 邓紫棋.m4a',mtitle: '多远都要在一起 - 邓紫棋'
+                }
+            },
+            methods: {
+                // 获取音乐
+                getMusicSrc: function () {
+                    // 先获取音乐，然后把参数传给musicSrc
+                },
+                // 播放和暂停音乐
+                parseAndPlay: function () {
+                    if (audioDOM !== null) {
+                        if ( audioDOM.paused ) {
+                            audioDOM.play();
+                            $('#audio_parse').css({
+                                'backgroundPosition': "1px 0px",
+                            });
+                        } else {
+                            audioDOM.pause();
+                            $('#audio_parse').css({
+                                'backgroundPosition': "-40px 0px",
+                            });
+                        }
+                    }
+                    // 判断当前的播放状态，并调用一次css样式更换
+                    console.log('this is player btn dom')
+                },
+                // 上一首歌
+                prevMusic: function () {
+                    // 先将getMusicSrc() 调用一遍，以获取一些数据
+                    // 然后重新加载音乐
+                    // 获取当前播放状态
+                    // 如果在播放，则播放，如果没有播放，则不播放，等待用户操作
+                },
+                // 下一首歌
+                nextMusic: function () {
+                    //主要原理同prevMusic
+                },
+                // 停止播放
+                stopMusic: function () {
+                    // 先停止音乐播放器
+                    // 然后冲加载音乐
+                    // 暂停播放
+                    audioDOM.load();
+                    audioDOM.pause();
+                    console.log('music stoped');
+                },
+            }
+        });
+    });
+
+
+</script>
 </html>

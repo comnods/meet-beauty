@@ -1,11 +1,161 @@
 /* Default styles that will carry to the child style sheet */
 html,body{
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
 }
+
+/* main-progress */
+.main-progress {
+    position: relative;
+}
+
+/* first-mask setting start */
+.main-progress > .first-mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .6);
+    display: none; /*默认给第一层设置隐藏*/
+}
+
+
+/* first-mask setting end */
+
+/* musicAU setting start */
+.main-progress > .musicAU {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: rgba(232,23,255,0.25);
+}
+
+.main-progress > .musicAU > #music-panel {
+    height: 100%;
+}
+/* musicAU setting end */
+
 /**PC**/
-@media only screen and (min-width: 1025px) {}
+@media only screen and (min-width: 1025px) {
+
+    /* musicAU setting start */
+    .main-progress > .musicAU {
+        height: 130px;
+    }
+    /* musicAU setting end */
+
+}
+
 /** iPad **/
-@media only screen and (min-width: 768px) and (max-width: 1024px) {}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    /* musicAU setting start */
+    .main-progress > .musicAU {
+    }
+    /* musicAU setting end */
+
+}
+
 /** iPhone **/
-@media only screen and (min-width: 320px) and (max-width: 767px) {}
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+    html,body{
+        background-image: url("../img/mobile_bg.jpg");/*背景图片*/
+        background-size: 100%; /*让背景图片宽度设置为横向100%，防止图片过大，超出范围*/
+        background-repeat: no-repeat; /*设置不重复帖图*/
+        background-color: #ffeedc !important; /*设置背景颜色与图片背景色一致*/
+        background-position: bottom center; /*设置图片居中防止屏幕大小不同而跑偏*/
+    }
+
+    /* musicAU setting start */
+    .main-progress > .musicAU {
+        height: 100px;
+    }
+
+    #music-control-image {
+        width: 100px;
+        height: 100px;
+        float: left;
+    }
+
+    #music-control-imas {
+        margin: 10px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 6px solid #ccc;
+        /*  动画旋转特效  */
+        -webkit-animation: spin 5s linear;
+        animation: spin 5s linear infinite;
+    }
+
+    #music-control-panel {
+        width: 100%;
+        height: 100%;
+        float: right;
+        position: relative;
+    }
+
+    #music-control-panel > span {
+        width: 100%;
+        text-align: center;
+    }
+
+    .music-control-panel-btn {
+        position: absolute;
+        bottom: 5px;
+    }
+
+    .music-control-panel-btn > a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-image: url("../img/icon.png");
+        background-repeat: no-repeat;
+        background-size: 300%;
+    }
+
+    a#audio_prev {
+        background-position: 1px -40px;
+    }
+
+    a#audio_parse {
+        background-position: 1px 0px;
+    }
+
+    a#audio_next {
+        background-position: -81px -40px;
+    }
+
+    a#audio_stop {
+        background-position: -81px 0;
+    }
+
+
+    /* musicAU setting end */
+
+}
+
+/* 旋转动画关键帧 */
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
