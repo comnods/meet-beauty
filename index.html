@@ -21,9 +21,7 @@
     <!--  百试不爽的音乐播放器  -->
     <div class="musicAU">
         <div id="music-panel">
-            <div id="music-control-image">
-                <img id="music-control-imas" :src="musicSrc.img" alt="">
-            </div>
+            <img id="music-control-imas" :src="musicSrc.img" alt="">
             <div id="music-control-panel">
                 <span>{{ musicSrc.mtitle }}</span>
                 <!--  按钮集  -->
@@ -52,7 +50,7 @@
         // 默认情况下动态设置 first-mask 的高宽
         $('.first-mask').genWidthAndHeight($(window).width(), $(window).height());
         // 默认情况下动态设置 music-control-panel 的宽度
-        $('#music-control-panel').width($(window).width() - $('#music-control-image').outerWidth());
+        $('#music-control-panel').width($(window).width() - $('#music-control-imas').outerWidth());
         // 即使在高宽变化的情况下也自动设置
         $(window).on('resize',function () {
             // console.log("Windows.width = " + $(window).width() + "Windows.height = " + $(window).height());
