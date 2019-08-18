@@ -50,7 +50,7 @@
         // 默认情况下动态设置 first-mask 的高宽
         $('.first-mask').genWidthAndHeight($(window).width(), $(window).height());
         // 默认情况下动态设置 music-control-panel 的宽度
-        $('#music-control-panel').width($(window).width() - $('#music-control-imas').outerWidth());
+        $('#music-control-panel').width($(window).width() - $('#music-control-imas').outerWidth() - 20);
         // 即使在高宽变化的情况下也自动设置
         $(window).on('resize',function () {
             // console.log("Windows.width = " + $(window).width() + "Windows.height = " + $(window).height());
@@ -60,6 +60,25 @@
             $('.first-mask').genWidthAndHeight($(window).width(), $(window).height());
             // 动态设置 music-control-panel 的宽度
             $('#music-control-panel').width($(window).width() - $('#music-control-image').outerWidth());
+        });
+
+        var $btnClickCount = 0;
+        $('.musicAU > #music-control-imas').on('click', function() {
+            $btnClickCount++;
+            if ($btnClickCount % 2 != 0) {
+                $('#music-panel > #music-control-panel').fadeOut();
+                $('#music-panel').animate({
+                    width: 0,
+                    background: 'rgba(0, 0, 0, 0)'
+                });
+            } else {
+                $('#music-panel > #music-control-panel').fadeIn();
+                $('#music-panel').animate({
+                    width: 500,
+                    background: 'red'
+                });
+            };
+            console.log("musicAU was click");
         });
 
         new Vue({
