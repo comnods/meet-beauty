@@ -6,5 +6,5 @@ $.fn.extend({
             width: width,
             height: height
         });
-    }
+    },
 });

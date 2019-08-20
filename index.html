@@ -21,7 +21,9 @@
     <!--  百试不爽的音乐播放器  -->
     <div class="musicAU">
         <div id="music-panel">
-            <img id="music-control-imas" :src="musicSrc.img" alt="">
+            <a href="javascript: void(0);" id="music-control-imas-btn" @click="autoIndentSet()">
+                <img id="music-control-imas" :src="musicSrc.img" alt="">
+            </a>
             <div id="music-control-panel">
                 <span>{{ musicSrc.mtitle }}</span>
                 <!--  按钮集  -->
@@ -62,31 +64,36 @@
             $('#music-control-panel').width($(window).width() - $('#music-control-image').outerWidth());
         });
 
+        // 音乐播放器的旋转图标点击缩放功能区
         var $btnClickCount = 0;
-        $('.musicAU > #music-control-imas').on('click', function() {
-            $btnClickCount++;
-            if ($btnClickCount % 2 != 0) {
-                $('#music-panel > #music-control-panel').fadeOut();
-                $('#music-panel').animate({
-                    width: 0,
-                    background: 'rgba(0, 0, 0, 0)'
-                });
-            } else {
-                $('#music-panel > #music-control-panel').fadeIn();
-                $('#music-panel').animate({
-                    width: 500,
-                    background: 'red'
-                });
-            };
-            console.log("musicAU was click");
-        });
+
+        // var $btnClickCount = 0;
+        // $('.musicAU > #music-control-imas').on('click', function() {
+        //     $btnClickCount++;
+        //     console.log("musicAU was click");
+        //     if ($btnClickCount % 2 != 0) {
+        //         $('#music-panel > #music-control-panel').fadeOut();
+        //         $('#music-panel').animate({
+        //             width: 0,
+        //             background: 'rgba(0, 0, 0, 0)'
+        //         });
+        //     } else {
+        //         $('#music-panel > #music-control-panel').fadeIn();
+        //         $('#music-panel').animate({
+        //             width: 500,
+        //             background: 'red'
+        //         });
+        //     }
+        // });
 
         new Vue({
             el: '.musicAU',
             data: {
                 musicSrc: {
                     img: 'resource/img/多远都要在一起.jpg',msrc: 'resource/music/多远都要在一起 - 邓紫棋.m4a',mtitle: '多远都要在一起 - 邓紫棋'
-                }
+                },
+                MusicCount: true,
+                thisWidth: $(window).width() - $('#music-control-imas').outerWidth() - 20,
             },
             methods: {
                 // 获取音乐
@@ -131,6 +138,25 @@
                     audioDOM.pause();
                     console.log('music stoped');
                 },
+                // 设置隐藏
+                autoIndentSet: function () {
+                    this.MusicCount =! this.MusicCount;
+                    if (this.MusicCount == true) {
+                        $('#music-control-panel').fadeIn(10).animate({
+                            width: this.thisWidth,
+                        });
+                        $('.musicAU').css({
+                            background: 'rgba(232, 23, 255, 0.25)',
+                        })
+                    } else if (this.MusicCount == false) {
+                        $('#music-control-panel').animate({
+                            width: 0,
+                        }).fadeOut(10);
+                        $('.musicAU').css({
+                            background: 'rgba(0, 0, 0, 0)',
+                        })
+                    }
+                }
             }
         });
     });
