@@ -81,6 +81,25 @@ $(function () {
         methods: {}
     });
 
+    // vue for sidebar
+    new Vue({
+        el: '.sidebar',
+        data: {
+            loginURL: 'login.html #form',
+            regURL: 'reg.html #form'
+        },
+        methods: {
+            loadLogin: function () {
+                $('#usermain').load(this.loginURL);
+                return false;
+            },
+            loadReg: function () {
+                $('#usermain').load(this.regURL);
+                return false;
+            }
+        }
+    });
+
     // vue for music
     new Vue({
         el: '.musicAU',
@@ -178,4 +197,5 @@ $(function () {
             }
         }
     });
+    // NProgress.done();
 });

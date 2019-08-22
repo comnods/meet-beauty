@@ -180,6 +180,11 @@ html,body{
     cursor: default;
 }
 
+.sidebar > userMain {
+    width: 360px;
+    height: 250px;
+}
+
 .sidebar > userMain > p {
     margin-top: 40px;
     width: 100%;
@@ -195,6 +200,10 @@ html,body{
     line-height: 35px;
     border: 2px solid #ddd;
     border-radius: 50px;
+}
+
+.sidebar > userMain > form {
+    margin-top: 10px;
 }
 /* user setting end */
 
