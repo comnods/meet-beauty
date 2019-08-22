@@ -78,10 +78,8 @@ html,body{
     width: 30px;
     height: 30px;
     float: right;
-    background: #eee;
     border-radius: 5px;
-    border-color: rgba(0,0,0,.08);
-    box-shadow: 0 1px 3px rgba(0,0,0,.03);
+    position: relative;
 }
 
 .search > a {
@@ -96,6 +94,39 @@ html,body{
 
 .search > a:hover {
     color: #45B6F7;
+}
+
+.search > .searchSub {
+    position: absolute;
+    top: 35px;
+    right: -10px;
+    z-index: 10001;
+    width: 300px;
+    height: 35px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search > .searchSub > form > input#search_text {
+    width: 248px;
+    height: 33px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    border: 0;
+    float: left;
+    text-indent: 10px;
+}
+
+.search > .searchSub > form > input#search_btn {
+    width: 50px;
+    height: 33px;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    float: right;
+    background: #ff9eaf;
 }
 
 .banner {
@@ -122,6 +153,50 @@ html,body{
     color: #45B6F7;
 }
 /* Top-banner setting end*/
+
+/* user setting start */
+.sidebar {
+    width: 360px;
+    height: 300px;
+    float: right;
+    margin-right: 20px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .03);
+}
+
+.sidebar > .sideTopBar {
+    width: 100%;
+    height: 50px;
+    background: rgba(0, 0, 0, .08);
+    border-radius: 5px 5px 0 0;
+    color: #666;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    cursor: default;
+}
+
+.sidebar > userMain > p {
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sidebar > userMain > .userMain_btn {
+    margin: 50px 0 0 120px;
+    width: 120px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+}
+/* user setting end */
 
 /* musicAU setting start */
 .main-progress > .musicAU {
@@ -279,4 +354,13 @@ a#audio_stop {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 2s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active, 2.1.8 版本以下 */ {
+    opacity: 0
 }

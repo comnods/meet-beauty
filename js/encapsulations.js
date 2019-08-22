@@ -43,6 +43,23 @@ $(function () {
         }
     });
 
+    // vue for search
+    new Vue({
+        el: '.search',
+        data: {
+            searchIcon: true,
+            removeIcon: false,
+            seaDis: false
+        },
+        methods: {
+            setIcon: function () {
+                this.seaDis =! this.seaDis;
+                this.searchIcon =! this.searchIcon;
+                this.removeIcon =! this.removeIcon;
+            }
+        }
+    });
+
     // vue for Banner
     new Vue({
         el: '.banner',

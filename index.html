@@ -29,9 +29,15 @@
             <span v-html="logo.poster"></span>
         </div>
         <div class="search">
-            <a href="javascript: void(0)">
-                <span class="glyphicon glyphicon-search"></span>
+            <a href="javascript: void(0)" @click="setIcon()" >
+                <span class="glyphicon" :class="{'glyphicon-search': searchIcon, 'glyphicon-remove': removeIcon}"></span>
             </a>
+            <div class="searchSub" v-if="seaDis">
+                <form action="">
+                    <input type="text" name="" id="search_text">
+                    <input type="button" value="搜索" id="search_btn">
+                </form>
+            </div>
         </div>
         <div class="banner">
             <ul>
@@ -40,6 +46,18 @@
                 </li>
             </ul>
         </div>
+    </div>
+    <!--  用户区域  -->
+    <div class="sidebar">
+        <div class="sideTopBar">
+            <span>用户中心</span>
+        </div>
+        <userMain>
+            <p>需要登录才能进行操作</p>
+            <div class="userMain_btn">
+                <a href="javascript: void(0);">登录</a> \ <a href="javascript: void(0);">注册</a>
+            </div>
+        </userMain>
     </div>
     <!--  百试不爽的音乐播放器 (先暂时隐藏起来）  -->
     <div class="musicAU" style="display: none">
