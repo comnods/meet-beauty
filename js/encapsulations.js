@@ -82,7 +82,7 @@ $(function () {
     });
 
     // vue for sidebar
-    new Vue({
+    var sodebar = new Vue({
         el: '.sidebar',
         data: {
             loginURL: 'login.html #form',
@@ -91,13 +91,29 @@ $(function () {
         methods: {
             loadLogin: function () {
                 $('#usermain').load(this.loginURL);
+                $('.sidebar').css({
+                    height: '316px'
+                });
                 return false;
             },
             loadReg: function () {
                 $('#usermain').load(this.regURL);
+                $('.sidebar').css({
+                    height: '590px'
+                });
                 return false;
             }
         }
+    });
+
+    $('#gotoReg').on('click', function () {
+        sodebar.loadReg();
+        console.log('加载注册模块');
+    });
+
+    $('#gotoLogin').on('click', function () {
+        sodebar.loadLogin();
+        console.log('加载登录模块');
     });
 
     // vue for music
